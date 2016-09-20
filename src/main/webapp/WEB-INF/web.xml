@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>ServletJsp</display-name>
+
+  <!-- 필터 클래스 등록 -->
+  <filter>
+      <filter-name>encoding</filter-name>
+      <filter-class>kr.co.mlec.filter.EncodingFilter</filter-class>
+      <init-param>
+          <param-name>charset</param-name>
+          <param-value>utf-8</param-value>
+      </init-param>
+  </filter>
+  
+  <!-- 필터와 URL 매핑 -->
+  <filter-mapping>
+      <filter-name>encoding</filter-name>
+      <url-pattern>*</url-pattern>
+  </filter-mapping>
+  
+<!--   <filter> -->
+<!--      <filter-name>authFilter</filter-name> -->
+<!--      <filter-class>kr.co.mlec.filter.AuthFilter</filter-class> -->
+<!--      <init-param> -->
+<!--          <param-name>pages</param-name> -->
+<!--          <param-value> -->
+<!--              /; -->
+<!--              /login/login; -->
+<!--              /login/loginForm; -->
+<!--              /index.jsp; -->
+<!--              /board/list.do -->
+<!--          </param-value> -->
+<!--      </init-param> -->
+<!--   </filter>   -->
+  
+<!--   <filter-mapping> -->
+<!--      <filter-name>authFilter</filter-name> -->
+<!--      <url-pattern>*</url-pattern>  -->
+<!--   </filter-mapping> -->
+  
+  
+  <servlet>
+  	<servlet-name>dispatcher</servlet-name>
+  	<servlet-class>framework.DispatcherServlet</servlet-class>
+  	<init-param>
+  		<param-name>scan-package</param-name>
+  		<param-value>kr.co.mlec</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>contextConfigLocation</param-name>
+  		<param-value>config/spring/context-common.xml</param-value>
+  	</init-param>
+  
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>dispatcher</servlet-name>
+  	<url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
